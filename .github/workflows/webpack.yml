@@ -17,11 +17,12 @@ jobs:
       uses: actions/setup-node@v5
       with:
         node-version: 24
+        check-latest: true
 
     - name: Install pnpm
-      run: npm install -g pnpm
+      run: corepack enable && corepack prepare pnpm@10.8.1 --activate
 
     - name: Build
       run: |
-        pnpm install
+        pnpm install --frozen-lockfile
         pnpm build
