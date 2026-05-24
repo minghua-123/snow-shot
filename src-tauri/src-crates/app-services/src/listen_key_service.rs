@@ -172,7 +172,8 @@ impl ListenKeyService {
                 ));
             }
         };
-        device_event_handler_lock.release();
+        // 使用 reset 方法完全重置设备事件处理器，解决后台挂起后无响应问题
+        device_event_handler_lock.reset();
 
         Ok(())
     }
