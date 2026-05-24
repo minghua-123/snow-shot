@@ -17,7 +17,6 @@ import React, {
 	useMemo,
 	useRef,
 } from "react";
-import "@mg-chao/excalidraw/index.css";
 import type { ExcalidrawElement } from "@mg-chao/excalidraw/element/types";
 import { theme } from "antd";
 import { debounce } from "es-toolkit";
