@@ -1,8 +1,4 @@
-```yaml
-# Configuration files for GitHub Actions workflows should not be ignored
-# The workflow files (.github/workflows/*.yml) are part of the source code
-# and need to be tracked in version control
-
-# No additional ignores needed for the detected changes
-# Workflow files are legitimate source/configuration files
+```
+# CI/CD
+.github/
 ```
