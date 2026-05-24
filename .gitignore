@@ -1,29 +1,16 @@
 ```
 # Dependencies
 node_modules/
-.pnpm-store/
-
-# Logs
-*.log
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
-# Editor
+# Editors
 .vscode/
-.idea/
-*.swp
-*.swo
 
-# Build artifacts
-dist/
-build/
-*.js.map
-*.min.js
-
-# Package manager
-pnpm-lock.yaml
-.yarn/
+# Logs and temp files
+*.log
+*.tmp
 ```
