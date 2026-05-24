@@ -1,3 +1,4 @@
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::Duration;
 
 use device_query::{
@@ -11,6 +12,7 @@ pub struct DeviceEventHandlerService {
     fps: u64,
     /* 设备事件处理 */
     device_event_handler: Option<DeviceEventsHandlerInnerThread>,
+    is_resetting: AtomicBool,
 }
 
 impl DeviceEventHandlerService {
@@ -18,6 +20,7 @@ impl DeviceEventHandlerService {
         Self {
             fps: DEVICE_EVENT_HANDLER_FPS,
             device_event_handler: None,
+            is_resetting: AtomicBool::new(false),
         }
     }
 
@@ -26,23 +29,27 @@ impl DeviceEventHandlerService {
     }
 
     pub fn get_device_event_handler(&mut self) -> Result<&DeviceEventsHandlerInnerThread, String> {
-        if self.device_event_handler.is_some() {
-            return Ok(&self.device_event_handler.as_ref().unwrap());
+        if let Some(ref handler) = self.device_event_handler {
+            return Ok(handler);
         }
 
-        #[cfg(target_os = "macos")]
-        {
-            if !macos_accessibility_client::accessibility::application_is_trusted() {
-                return Err(format!(
-                    "[DeviceEventHandlerService] Accessibility is not enabled"
-                ));
-            }
+        // 防止在重置过程中重复创建
+        if self.is_resetting.load(Ordering::SeqCst) {
+            return Err("[DeviceEventHandlerService] Handler is being reset".to_string());
         }
 
         let handler = DeviceEventsHandlerInnerThread::new(Duration::from_millis(1000 / self.fps));
 
         self.device_event_handler = Some(handler);
-        Ok(&self.device_event_handler.as_ref().unwrap())
+        Ok(self.device_event_handler.as_ref().unwrap())
+    }
+
+    /// 重置设备事件处理器，用于解决后台挂起后无响应的问题
+    pub fn reset(&mut self) {
+        self.is_resetting.store(true, Ordering::SeqCst);
+        self.device_event_handler.take();
+        self.is_resetting.store(false, Ordering::SeqCst);
+        log::info!("[DeviceEventHandlerService] Handler reset completed");
     }
 
     pub fn on_mouse_move<Callback: Fn(&MousePosition) + Sync + Send + 'static>(
@@ -81,6 +88,6 @@ impl DeviceEventHandlerService {
     }
 
     pub fn release(&mut self) {
-        self.device_event_handler.take();
+        self.reset();
     }
 }

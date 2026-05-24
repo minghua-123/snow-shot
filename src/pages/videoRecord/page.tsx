@@ -209,7 +209,8 @@ export const VideoRecordPage: React.FC = () => {
 			setVideoRecordState(VideoRecordState.Idle);
 			drawSelectRect(VideoRecordState.Idle);
 
-			appWindow.setIgnoreCursorEvents(true);
+			// 移除 setIgnoreCursorEvents，改用窗口透明效果避免录制期间鼠标闪动
+			// 视频中鼠标显示正常，只是录屏期间不再强制忽略鼠标事件
 		},
 		[drawSelectRect, setVideoRecordState, videoRecordStateRef],
 	);
