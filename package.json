@@ -19,10 +19,10 @@
 		"preview": "rsbuild preview",
 		"lint": "biome format ./ && biome check ./",
 		"lint:fix": "biome format ./ --write && biome check --write ./src",
-		"update:excalidraw": "cd ../excalidraw && rimraf ./packages/excalidraw/dist && yarn build:packages && cd ../snow-shot && pnpm update @mg-chao/excalidraw",
+		"update:excalidraw": "cd ../excalidraw && rimraf ./packages/excalidraw/dist && yarn build:packages && cd ../snow-shot && npm update @mg-chao/excalidraw",
 		"dev:rsdoctor": "cross-env RSDOCTOR=true rsbuild dev",
 		"build:rsdoctor": "cross-env RSDOCTOR=true rsbuild build",
-		"build:analyze": "cross-env BUNDLE_ANALYZE=true pnpm build",
+		"build:analyze": "cross-env BUNDLE_ANALYZE=true npm run build",
 		"prepare": "husky"
 	},
 	"dependencies": {
@@ -107,5 +107,4 @@
 		"firefox >= 78",
 		"safari >= 14"
 	],
-	"packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }
