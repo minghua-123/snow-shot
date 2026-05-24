@@ -1,37 +1,21 @@
 ```
 # Dependencies
 node_modules/
-.pnpm-store/
-.pnpm-debug.log
+
+# Logs and temp files
+*.log
+*.tmp
 
 # Environment
-.npmrc
 .env
 .env.local
 .env.*
+
+# Editors
+.vscode/
+.idea/
 
 # Build outputs
 dist/
 build/
-coverage/
-*.log
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Python (if applicable)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-.venv/
-.env
-.env.local
-.env.*
 ```
