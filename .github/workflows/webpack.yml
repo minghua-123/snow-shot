@@ -17,10 +17,9 @@ jobs:
       uses: actions/setup-node@v5
       with:
         node-version: 24
-        cache: 'pnpm'
 
-    - name: Setup pnpm
-      run: npm install -g pnpm@10.8.1
+    - name: Install pnpm
+      run: npm install -g pnpm
 
     - name: Build
       run: |
