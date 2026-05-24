@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v5
@@ -20,7 +20,7 @@ jobs:
         check-latest: true
 
     - name: Install pnpm
-      run: corepack enable && corepack prepare pnpm@10.8.1 --activate
+      run: npm install -g pnpm
 
     - name: Build
       run: |

@@ -1,8 +1,8 @@
-```yaml
+```
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
 target/
@@ -12,50 +12,67 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.Python
-env/
+*.py.class
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environments
 venv/
 .venv/
-.ENV
-.python-version
+env/
+.env/
 
 # Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variable files
-.env
-.env.local
-.env.*
-!.env.example
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
 
 # Temporary files
 *.tmp
 *.temp
-*.bak
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+.directory
+ehthumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Distribution / packaging
+.Python
+*.egg
+*.zip
+*.tar.gz
+*.whl
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyTest
+.pytest_cache/
+
+# Gradle
+.gradle/
+
+# Maven
+target/
 
 # Compressed files
 *.zip
@@ -76,8 +93,4 @@ htmlcov/
 *.Z
 *.lz
 *.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
 ```
