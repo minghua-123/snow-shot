@@ -8,6 +8,8 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": "./src",
+			// 在构建时使用全局 Excalidraw 对象，避免打包本地包
+			"@mg-chao/excalidraw": "window.ExcalidrawLib",
 		},
 	},
 	output: {
@@ -53,6 +55,11 @@ export default defineConfig({
 				}),
 			],
 			optimization: {},
+			externals: {
+				"@mg-chao/excalidraw": "window.ExcalidrawLib",
+				"@mg-chao/excalidraw/types": "window.ExcalidrawLib",
+				"@mg-chao/excalidraw/element/types": "window.ExcalidrawLib",
+			},
 		},
 	},
 });
