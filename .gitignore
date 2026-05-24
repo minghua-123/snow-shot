@@ -1,44 +1,46 @@
-```rust
-# Build artifacts
-target/
-**/target/
-
+```
 # Dependencies
-**/node_modules/
-**/vendor/
+node_modules/
 
-# Tauri specific
-**/src-tauri/target/
-**/Cargo.lock
-
-# Temporary files
-*.tmp
-*.temp
-.DS_Store
-Thumbs.db
-
-# Logs
+# Logs and temp files
 *.log
+*.tmp
 
 # Environment
 .env
 .env.local
-*.env
+*.env.*
 
-# IDE
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# Coverage
-coverage/
-htmlcov/
+# Build artifacts
+dist/
+build/
+target/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
 .coverage
-
-# Rust specific
-**/__pycache__/
-**/*.pyc
-**/*.pyo
-**/*.pyd
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git*
+!/.gitignore
+.DS_Store
+Thumbs.db
 ```
